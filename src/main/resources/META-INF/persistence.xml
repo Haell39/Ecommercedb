@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_3_1.xsd"
+             version="2.1">
+    <persistence-unit name="Teste-unit">
+        <class>com.ecommerceFICR.Model.clientes.Cliente</class> <!-- Your entity classes here -->
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/><!--ATENÇÃO!! ATUALIZAR CASO O MYSQL ESTEJA EM UMA VERÇÃO DIFERENTE::: banco definido como MYSQL-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/><!--driver class pra acessar o MYSQL-->
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/yourdb"/>
+            <property name="hibernate.connection.username" value="root"/><!--usuario para acessar o MYSQL-->
+            <property name="hibernate.connection.password" value="password"/><!--senha para acessar o MYSQL-->
+        </properties>
+    </persistence-unit>
+</persistence>
