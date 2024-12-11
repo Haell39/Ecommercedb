@@ -1,19 +1,43 @@
-
-
 import com.ecommerceFICR.Model.clientes.Cliente;
 import com.ecommerceFICR.Model.clientes.ClienteDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteDAOTest {
 
     private ClienteDAO clienteDAO;
+    private Connection conexao;
 
     @BeforeEach
     public void setUp() {
-        clienteDAO = new ClienteDAO();
+        conexao = ConexaoFactory.getConexao();
+        clienteDAO = new ClienteDAO(conexao);
+        
+        limparTabelaCliente();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        try {
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void limparTabelaCliente() {
+        try {
+            Statement stmt = conexao.createStatement();
+            stmt.executeUpdate("DELETE FROM clientes");
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
