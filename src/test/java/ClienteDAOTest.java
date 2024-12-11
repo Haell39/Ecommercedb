@@ -25,10 +25,10 @@ public class ClienteDAOTest {
             }
         };
         cliente.setIdCliente(1);
-        cliente.setNome("João");
-        cliente.setEmail("joao@email.com");
-        cliente.setCpf("12345678900");
-        cliente.setEndereco("Rua XYZ");
+        cliente.setNome("Manuel");
+        cliente.setEmail("manuel@email.com");
+        cliente.setCpf("12345644900");
+        cliente.setEndereco("Rua das lolo");
 
         clienteDAO.salvar(cliente);
 
