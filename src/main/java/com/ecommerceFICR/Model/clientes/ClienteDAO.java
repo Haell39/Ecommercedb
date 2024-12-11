@@ -5,36 +5,21 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class ClienteDAO {
-    private EntityManager entityManager;
 
-    public ClienteDAO() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Teste-unit");
-        this.entityManager = entityManagerFactory.createEntityManager();
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Teste-unit");
+
+    public void salvar(Cliente cliente) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(cliente);
+        em.getTransaction().commit();
+        em.close();
     }
 
-    public void create(Cliente cliente) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(cliente);
-        entityManager.getTransaction().commit();
-    }
-
-    public Cliente find(int id) {
-        return entityManager.find(Cliente.class, id);
-    }
-
-    public void update(Cliente cliente) {
-        entityManager.getTransaction().begin();
-        entityManager.merge(cliente);
-        entityManager.getTransaction().commit();
-    }
-
-    public void delete(Cliente cliente) {
-        entityManager.getTransaction().begin();
-        entityManager.remove(cliente);
-        entityManager.getTransaction().commit();
-    }
-
-    public void closeEntityManager() {
-        entityManager.close();
+    public Cliente buscar(Integer id) {
+        EntityManager em = emf.createEntityManager();
+        Cliente cliente = em.find(Cliente.class, id);
+        em.close();
+        return cliente;
     }
 }
