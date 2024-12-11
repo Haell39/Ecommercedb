@@ -13,7 +13,7 @@ public class conexao {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Corrigir a string de conexão
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "deuscura2");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clientes", "root", "deuscura1");
 
             // Executar a consulta
             ResultSet rsCliente = conexao.createStatement().executeQuery("SELECT * FROM clientes");

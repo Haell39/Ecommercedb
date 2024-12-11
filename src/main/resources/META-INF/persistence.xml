@@ -13,7 +13,7 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/><!--driver class pra acessar o MYSQL-->
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ecommerce"/>
             <property name="hibernate.connection.username" value="root"/><!--usuario para acessar o MYSQL-->
-            <property name="hibernate.connection.password" value="deuscura2"/><!--senha para acessar o MYSQL-->
+            <property name="hibernate.connection.password" value="deuscura1"/><!--senha para acessar o MYSQL-->
         </properties>
     </persistence-unit>
 </persistence>
