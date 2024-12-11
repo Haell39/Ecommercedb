@@ -1,5 +1,7 @@
 import com.ecommerceFICR.Model.clientes.Cliente;
 import com.ecommerceFICR.Model.clientes.ClienteDAO;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
