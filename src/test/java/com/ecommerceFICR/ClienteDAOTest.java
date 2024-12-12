@@ -20,7 +20,6 @@ public class ClienteDAOTest {
 
     @Test
     void testCriarEBuscarCliente() {
-        // Criar um novo cliente
         Cliente cliente = new Cliente() {
             @Override
             public void registrarCompra(double valor) {
@@ -28,23 +27,20 @@ public class ClienteDAOTest {
             }
         };
         cliente.setIdCliente(1);
-        cliente.setNome("João Teste");
-        cliente.setEmail("joao@teste.com");
-        cliente.setCpf("12345678900");
-        cliente.setEndereco("Rua Teste, 123");
+        cliente.setNome("Maria Silva");
+        cliente.setEmail("maria@email.com");
+        cliente.setCpf("12345678901");
+        cliente.setEndereco("Rua das Flores, 123");
 
-        // Salvar no banco
         clienteDAO.salvar(cliente);
 
-        // Buscar o cliente salvo
         Cliente clienteRecuperado = clienteDAO.buscar(1);
 
-        // Verificar se os dados estão corretos
         assertNotNull(clienteRecuperado);
-        assertEquals("João Teste", clienteRecuperado.getNome());
-        assertEquals("joao@teste.com", clienteRecuperado.getEmail());
-        assertEquals("12345678900", clienteRecuperado.getCpf());
-        assertEquals("Rua Teste, 123", clienteRecuperado.getEndereco());
+        assertEquals("Maria Silva", clienteRecuperado.getNome());
+        assertEquals("maria@email.com", clienteRecuperado.getEmail());
+        assertEquals("12345678901", clienteRecuperado.getCpf());
+        assertEquals("Rua das Flores, 123", clienteRecuperado.getEndereco());
         
         System.out.println("Cliente criado e recuperado com sucesso!");
         System.out.println("Nome: " + clienteRecuperado.getNome());
