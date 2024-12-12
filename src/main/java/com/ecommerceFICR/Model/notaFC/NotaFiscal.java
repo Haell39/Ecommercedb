@@ -13,7 +13,7 @@ public class NotaFiscal {
 
     public double calcularValorTotal() {
         return produtos.stream()
-                .mapToDouble(produto -> produto.getPreco() * produto.getQuantidade())
+                .mapToDouble(produto -> produto.getPreco() * produto.getQuantidadeEstoque())
                 .sum();
     }
 

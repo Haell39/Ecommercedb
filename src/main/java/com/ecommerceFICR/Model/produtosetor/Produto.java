@@ -4,9 +4,11 @@ public abstract class Produto {
     private int idProduto;
     private String nome;
     private String categoria;
-    private String descricao;
     private double preco;
-    private int quantidade;
+    private int quantidadeEstoque;
+    private String descricao;
+
+    public Produto() {}
 
     public Produto(int idProduto, String nome, String categoria, String descricao, double preco, int quantidade) {
         this.idProduto = idProduto;
@@ -14,62 +16,28 @@ public abstract class Produto {
         this.categoria = categoria;
         this.descricao = descricao;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.quantidadeEstoque = quantidade;
     }
 
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    // Método abstrato para calcular o desconto do produto
+    // Método abstrato que deve ser implementado pelas classes filhas
     public abstract double calcularDesconto();
 
-    @Override
-    public String toString() {
-        return "Produto ID: " + idProduto + ", Nome: " + nome + ", Categoria: " + categoria + ", Preço: " + preco + ", Quantidade: " + quantidade;
-    }
+    // Getters e Setters
+    public int getIdProduto() { return idProduto; }
+    public void setIdProduto(int idProduto) { this.idProduto = idProduto; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+
+    public double getPreco() { return preco; }
+    public void setPreco(double preco) { this.preco = preco; }
+
+    public int getQuantidadeEstoque() { return quantidadeEstoque; }
+    public void setQuantidadeEstoque(int quantidadeEstoque) { this.quantidadeEstoque = quantidadeEstoque; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 }

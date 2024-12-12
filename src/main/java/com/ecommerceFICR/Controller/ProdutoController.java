@@ -43,7 +43,7 @@ public class ProdutoController {
             System.out.print("Novo nome: ");
             produto.setNome(input.next());
             System.out.print("Nova quantidade: ");
-            produto.setQuantidade(input.nextInt());
+            produto.setQuantidadeEstoque(input.nextInt());
             estoqueProdutos.atualizarProduto(produto);
             System.out.println("Produto atualizado com sucesso!");
         } else {
