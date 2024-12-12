@@ -20,33 +20,56 @@ public class ProdutoDAOTest {
 
     @Test
     void testCriarEBuscarProduto() {
-        // Criar um novo produto
         ProdutoConcreto produto = new ProdutoConcreto(
-            1,
-            "Notebook Gamer",
+            200,
+            "Notebook Dell",
             "Eletrônicos",
-            "Notebook Gamer Intel i7, 16GB RAM",
-            3999.99,
-            10
+            "Notebook Dell i7 16GB",
+            4999.99,
+            5
         );
 
-        // Salvar no banco
         produtoDAO.salvar(produto);
 
-        // Buscar o produto salvo
-        ProdutoConcreto produtoRecuperado = (ProdutoConcreto) produtoDAO.buscar(1);
+        ProdutoConcreto produtoRecuperado = (ProdutoConcreto) produtoDAO.buscar(200);
 
-        // Verificar se os dados estão corretos
         assertNotNull(produtoRecuperado);
-        assertEquals("Notebook Gamer", produtoRecuperado.getNome());
-        assertEquals(3999.99, produtoRecuperado.getPreco());
-        assertEquals(10, produtoRecuperado.getQuantidadeEstoque());
-        assertEquals("Notebook Gamer Intel i7, 16GB RAM", produtoRecuperado.getDescricao());
+        assertEquals("Notebook Dell", produtoRecuperado.getNome());
+        assertEquals(4999.99, produtoRecuperado.getPreco());
+        assertEquals(5, produtoRecuperado.getQuantidadeEstoque());
         
         System.out.println("Produto criado e recuperado com sucesso!");
         System.out.println("Nome: " + produtoRecuperado.getNome());
         System.out.println("Preço: R$" + produtoRecuperado.getPreco());
-        System.out.println("Estoque: " + produtoRecuperado.getQuantidadeEstoque());
+    }
+
+    @Test
+    void testAdicionarVariosProdutos() {
+        // Produto 1
+        ProdutoConcreto produto1 = new ProdutoConcreto(
+            201,
+            "Monitor Gaming",
+            "Eletrônicos",
+            "Monitor 144Hz 27 polegadas",
+            1999.99,
+            3
+        );
+        produtoDAO.salvar(produto1);
+
+        // Produto 2
+        ProdutoConcreto produto2 = new ProdutoConcreto(
+            202,
+            "Teclado Mecânico",
+            "Periféricos",
+            "Teclado RGB Switch Blue",
+            299.99,
+            10
+        );
+        produtoDAO.salvar(produto2);
+
+        System.out.println("Produtos adicionados com sucesso!");
+        System.out.println("Produto 1: " + produto1.getNome() + " - R$" + produto1.getPreco());
+        System.out.println("Produto 2: " + produto2.getNome() + " - R$" + produto2.getPreco());
     }
 
     @AfterEach

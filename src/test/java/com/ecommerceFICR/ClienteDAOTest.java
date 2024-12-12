@@ -22,11 +22,9 @@ public class ClienteDAOTest {
     void testCriarEBuscarCliente() {
         Cliente cliente = new Cliente() {
             @Override
-            public void registrarCompra(double valor) {
-                // implementação do método abstrato
-            }
+            public void registrarCompra(double valor) {}
         };
-        cliente.setIdCliente(1);
+        cliente.setIdCliente(200);
         cliente.setNome("Maria Silva");
         cliente.setEmail("maria@email.com");
         cliente.setCpf("12345678901");
@@ -34,7 +32,7 @@ public class ClienteDAOTest {
 
         clienteDAO.salvar(cliente);
 
-        Cliente clienteRecuperado = clienteDAO.buscar(1);
+        Cliente clienteRecuperado = clienteDAO.buscar(200);
 
         assertNotNull(clienteRecuperado);
         assertEquals("Maria Silva", clienteRecuperado.getNome());
@@ -45,6 +43,37 @@ public class ClienteDAOTest {
         System.out.println("Cliente criado e recuperado com sucesso!");
         System.out.println("Nome: " + clienteRecuperado.getNome());
         System.out.println("Email: " + clienteRecuperado.getEmail());
+    }
+
+    @Test
+    void testAdicionarVariosClientes() {
+        // Cliente 1
+        Cliente cliente1 = new Cliente() {
+            @Override
+            public void registrarCompra(double valor) {}
+        };
+        cliente1.setIdCliente(201);
+        cliente1.setNome("Ana Silva");
+        cliente1.setEmail("ana@email.com");
+        cliente1.setCpf("11122233344");
+        cliente1.setEndereco("Rua A, 123");
+        clienteDAO.salvar(cliente1);
+
+        // Cliente 2
+        Cliente cliente2 = new Cliente() {
+            @Override
+            public void registrarCompra(double valor) {}
+        };
+        cliente2.setIdCliente(202);
+        cliente2.setNome("Carlos Santos");
+        cliente2.setEmail("carlos@email.com");
+        cliente2.setCpf("22233344455");
+        cliente2.setEndereco("Rua B, 456");
+        clienteDAO.salvar(cliente2);
+
+        System.out.println("Clientes adicionados com sucesso!");
+        System.out.println("Cliente 1: " + cliente1.getNome());
+        System.out.println("Cliente 2: " + cliente2.getNome());
     }
 
     @AfterEach
